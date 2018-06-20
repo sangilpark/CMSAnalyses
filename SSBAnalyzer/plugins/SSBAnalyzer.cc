@@ -162,16 +162,7 @@ effAreaPhotons_((iConfig.getParameter<edm::FileInPath>("effAreaPhoFile")).fullPa
    btagList            = iConfig.getParameter<std::vector<std::string>>("btagListTag") ;
 // needed for MET
    metToken_               = consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("metTag")); // MC & DATA with JEC
-   if (isMC == true)
-   {
-      metsMuCleanCorrToken_   = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metmucleancorTag")); // MC Reclusted MET with Mu 
-   }
-   else {
-      metsEGCleanToken_       = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metegcleanTag")); // DATA PAT Clean EG  
-      metsMuEGCleanToken_     = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metmuegcleanTag")); // DATA PAT Clean MuEG
-      metsMuEGCleanCorrToken_ = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metmuegcleancorTag")); // DATA Reclusted MET with cleaned MuEG
-      metsUncorrectedToken_   = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metuncorTag")); // DATA Uncorrcted MET 
-   }
+   //metsMuCleanCorrToken_   = consumes<METCollection>(iConfig.getParameter<edm::InputTag>("metmucleancorTag")); // MC Reclusted MET with Mu 
 }
 
 
@@ -1634,7 +1625,7 @@ SSBAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       MET_index++;
    }
 
-
+/*
    if (isMC == true){
    /// MC Reclusted MET Bad MU Cleaned ///
       int METMuCorrClean_index = 0;
@@ -1644,10 +1635,11 @@ SSBAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       {
          for (const pat::MET &itMet : *metmuclean)
          {
-/*            cout << " MET MC pt Test1 : " << itMet.shiftedPt(pat::MET::NoShift, pat::MET::Type1XY) 
-                 << " MET MC phi Test1 : " << itMet.shiftedPhi(pat::MET::NoShift, pat::MET::Type1XY) 
-                 << " MET MC pt Test2 : " << itMet.shiftedPt(pat::MET::NoShift, pat::MET::Type1SmearXY) 
-                 << " MET MC phi Test2 : " << itMet.shiftedPhi(pat::MET::NoShift, pat::MET::Type1SmearXY) << endl;*/
+            //cout << " MET MC pt Test1 : " << itMet.shiftedPt(pat::MET::NoShift, pat::MET::Type1XY) 
+            //     << " MET MC phi Test1 : " << itMet.shiftedPhi(pat::MET::NoShift, pat::MET::Type1XY) 
+            //     << " MET MC pt Test2 : " << itMet.shiftedPt(pat::MET::NoShift, pat::MET::Type1SmearXY) 
+            //     << " MET MC phi Test2 : " << itMet.shiftedPhi(pat::MET::NoShift, pat::MET::Type1SmearXY) << endl;
+	    
             ssbtreeManager->Fill( "METMUCleanCor" , itMet.shiftedPt(pat::MET::NoShift, pat::MET::Type1XY), 0, itMet.shiftedPhi(pat::MET::NoShift, pat::MET::Type1XY), 0, METMuCorrClean_index );
             ssbtreeManager->Fill( "METMUCleanCor_JetEnShiftedUp_PT"    ,  itMet.shiftedPt(  pat::MET::JetEnUp,   pat::MET::Type1XY) );
             ssbtreeManager->Fill( "METMUCleanCor_JetEnShiftedUp_Phi"   ,  itMet.shiftedPhi( pat::MET::JetEnUp,   pat::MET::Type1XY) );
@@ -1969,6 +1961,8 @@ SSBAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
          }
       }
    }
+*/
+
    /// Fill Ntuples at each event
    ssbtreeManager->FillNtuple();
 
