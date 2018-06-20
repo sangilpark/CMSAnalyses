@@ -362,7 +362,7 @@ process.ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
                                                        quality = cms.string('LOOSE')
                                                       ),
                                     metTag = cms.InputTag("slimmedMETs","","PAT"),
-                                    metmucleancorTag = cms.InputTag("slimmedMETs","","PAT"),
+                                    #metmucleancorTag = cms.InputTag("slimmedMETs","","PAT"),
 )
 process.p = cms.Path(
         process.selectedElectrons *
