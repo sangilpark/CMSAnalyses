@@ -39,10 +39,10 @@ using namespace pat;
 //
 SSBAnalyzer::SSBAnalyzer(const edm::ParameterSet& iConfig)
 :
-effectiveAreas_( (iConfig.getParameter<edm::FileInPath>("effAreasConfigFile")).fullPath()),
-effAreaChHadrons_((iConfig.getParameter<edm::FileInPath>("effAreaChHadFile")).fullPath() ),
-effAreaNeuHadrons_((iConfig.getParameter<edm::FileInPath>("effAreaNeuHadFile")).fullPath() ),
-effAreaPhotons_((iConfig.getParameter<edm::FileInPath>("effAreaPhoFile")).fullPath() )
+effectiveAreas_((iConfig.getParameter<edm::FileInPath>("effAreasConfigFile")).fullPath()),
+effAreaChHadrons_((iConfig.getParameter<edm::FileInPath>("effAreaChHadFile")).fullPath()),
+effAreaNeuHadrons_((iConfig.getParameter<edm::FileInPath>("effAreaNeuHadFile")).fullPath()),
+effAreaPhotons_((iConfig.getParameter<edm::FileInPath>("effAreaPhoFile")).fullPath())
 {
    isMC = iConfig.getParameter<bool>("isMCTag");
    isSignal = iConfig.getParameter<bool>("isSignal");
@@ -67,7 +67,7 @@ effAreaPhotons_((iConfig.getParameter<edm::FileInPath>("effAreaPhoFile")).fullPa
       genParInfoTag 		     = consumes<reco::GenParticleCollection>(iConfig.getParameter<edm::InputTag>("genParTag"));
       genJetInfoTag 		     = consumes<reco::GenJetCollection>(iConfig.getParameter<edm::InputTag>("genJetTag"));
       genMETInfoTag 		     = consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("genMETTag"));
-      genJetReclusInfoTag            = consumes<reco::GenJetCollection>(iConfig.getParameter<edm::InputTag> ("genJetReclusTag"));
+      //genJetReclusInfoTag            = consumes<reco::GenJetCollection>(iConfig.getParameter<edm::InputTag> ("genJetReclusTag"));
       //genBHadPlusMothersToken_       = consumes<std::vector<reco::GenParticle> >(iConfig.getParameter<edm::InputTag>("genBHadPlusMothersTag"));
       //genBHadIndexInfoTag            = consumes<std::vector<int> >(iConfig.getParameter<edm::InputTag>("genBHadIndexTag"));
       //genBHadFlavourInfoTag          = consumes<std::vector<int> >(iConfig.getParameter<edm::InputTag>("genBHadFlavourTag"));
@@ -733,20 +733,20 @@ SSBAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
    iEvent.getByToken(triggerPrescales_, triggerPrescales);                                                                              
    
    const edm::TriggerNames &names = iEvent.triggerNames(*triggerBits);                                                                  
-   for (unsigned int i = 0, n = triggerBits->size(); i < n; ++i)                                                                        
+   for (unsigned int i = 0, n = triggerBits->size(); i < n; ++i)
    {                                                                                                                                    
       //cout << "Trigger : " << names.triggerName(i) << endl;
-      for (unsigned int j =0; j < triggerList.size() ;j++)                                                                              
-      {                                                                                                                                 
-         
+      for (unsigned int j =0; j < triggerList.size() ;j++)
+      {
          trigPass_ = false;
-         trigError_ = false;                                                                                                            
+         trigError_ = false;
          trigRun_ =false;
+
          unsigned int trigPreScale_ = 0;
-         if (TString(names.triggerName(i)).Contains(triggerList.at(j)) )                                                                
+         if (TString(names.triggerName(i)).Contains(triggerList.at(j)) )
          {  
             trigPass_ = triggerBits->accept(i);                                                                                         
-            trigError_ = triggerBits->error(i);                                                                                         
+            trigError_ = triggerBits->error(i);
             trigRun_ = triggerBits->wasrun(i) ;
             trigPreScale_ = triggerPrescales->getPrescaleForIndex(i);                                                                   
             
