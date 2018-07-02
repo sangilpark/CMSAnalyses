@@ -160,15 +160,9 @@ class SSBAnalyzer : public edm::EDAnalyzer {
 
       bool isMC;
 
-      // METFilter //
-      edm::EDGetTokenT<bool> BadChCandFilterToken_;
-      edm::EDGetTokenT<bool> BadPFMuonFilterToken_;
-      edm::EDGetTokenT<bool> badGlobalMuonTaggerToken_;
-      edm::EDGetTokenT<bool> cloneGlobalMuonFilterToken_;
       edm::EDGetTokenT<edm::TriggerResults> triggerBitsPAT_;
 
       // PDF
-//      edm::InputTag pdfTag;
       edm::EDGetTokenT<GenEventInfoProduct> pdfTag;
       std::string   fixPOWHEG_;
       std::vector<std::string> pdfSets;
@@ -220,36 +214,32 @@ class SSBAnalyzer : public edm::EDAnalyzer {
       /// Electron
       edm::EDGetTokenT<reco::BeamSpot> beamSpotInputTag;
       edm::EDGetTokenT<ConversionCollection> conversionsInputTag;
-//      edm::EDGetTokenT<pat::ElectronCollection> electronToken_;
       edm::EDGetTokenT<edm::View<pat::Electron>  >  electronToken_;
-      edm::EDGetTokenT<pat::ElectronCollection> electronPATToken_;
       edm::EDGetTokenT<edm::View<pat::Electron>  >  electronEnUpToken_; // For Systematic ... 
       edm::EDGetTokenT<edm::View<pat::Electron>  >  electronEnDownToken_; // For Systematic ... 
+      
       // For Electron VID 
       edm::EDGetTokenT<edm::ValueMap<bool> > eleVetoIdMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > eleLooseIdMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > eleMediumIdMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > eleTightIdMapToken_;
-      edm::EDGetTokenT<edm::ValueMap<bool> > eleHEEPIdMapToken_;
 
       // ID decisions objects
       edm::EDGetTokenT<edm::ValueMap<bool> > mva_Iso_eleMediumMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > mva_Iso_eleTightMapToken_;
-      edm::EDGetTokenT<edm::ValueMap<bool> > mva_Iso_eleHZZIDMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > mva_NoIso_eleMediumMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > mva_NoIso_eleTightMapToken_;
-      edm::EDGetTokenT<edm::ValueMap<bool> > mva_NoIso_eleHZZIDMapToken_;
+      
       // MVA values and categories (optional)
       edm::EDGetTokenT<edm::ValueMap<float> > mvaIsoValuesMapToken_;
       edm::EDGetTokenT<edm::ValueMap<int> > mvaIsoCategoriesMapToken_;
       edm::EDGetTokenT<edm::ValueMap<float> > mvaNoIsoValuesMapToken_;
       edm::EDGetTokenT<edm::ValueMap<int> > mvaNoIsoCategoriesMapToken_;
-      edm::EDGetTokenT<edm::ValueMap<float> > mvaValuesHZZMapToken_;
-      edm::EDGetTokenT<edm::ValueMap<int> > mvaCategoriesHZZMapToken_;
 
       /// Photon
       edm::EDGetTokenT<edm::View<pat::Photon>  >  photonToken_;
       edm::EDGetTokenT<pat::PhotonCollection> photonPATToken_;
+      
       // For Photon VID 
       edm::EDGetTokenT<edm::ValueMap<bool> > phoVetoIdMapToken_;
       edm::EDGetTokenT<edm::ValueMap<bool> > phoLooseIdMapToken_;
@@ -259,6 +249,7 @@ class SSBAnalyzer : public edm::EDAnalyzer {
       edm::EDGetTokenT<edm::ValueMap<bool> > pho_mva_NonTrigTightIdWP90MapToken_;
       edm::EDGetTokenT<edm::ValueMap<float> > pho_mvaWP80ValuesMapToken_;
       edm::EDGetTokenT<edm::ValueMap<float> > pho_mvaWP90ValuesMapToken_;
+      
       // For Photon Isolation
       edm::EDGetTokenT<edm::ValueMap<float> > full5x5SigmaIEtaIEtaMapToken_; 
       edm::EDGetTokenT<edm::ValueMap<float> > phoChargedIsolationToken_; 
@@ -273,7 +264,7 @@ class SSBAnalyzer : public edm::EDAnalyzer {
       edm::EDGetTokenT<pat::JetCollection> jetTokenUp_;
       std::string jetUncTag;
       std::string payloadName_;
-      bool jer_use_conddb = false;
+      bool jer_use_conddb = true;
       std::string phi_resol_mc_file;
       std::string phi_resol_data_file;
       std::string pt_resol_mc_file;
@@ -287,11 +278,6 @@ class SSBAnalyzer : public edm::EDAnalyzer {
 
       // Met
       edm::EDGetTokenT<pat::METCollection> metToken_;
-      edm::EDGetTokenT<pat::METCollection> metsEGCleanToken_;  // DATA
-      edm::EDGetTokenT<pat::METCollection> metsMuEGCleanToken_; // DATA
-      edm::EDGetTokenT<pat::METCollection> metsMuEGCleanCorrToken_; // DATA
-      edm::EDGetTokenT<pat::METCollection> metsMuCleanCorrToken_; // MC  recompute bad muon //
-      edm::EDGetTokenT<pat::METCollection> metsUncorrectedToken_; // DATA
 
       /// index for TClonesArray
       int genPar_index;
