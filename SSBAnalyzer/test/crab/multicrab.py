@@ -7,16 +7,16 @@ pyCfgParams = ['outputFile=SSBTree.root',
 
 config.section_('General')
 config.General.transferLogs = True
-config.General.workArea     = 'crabdir2'  # Make sure you set this parameter
+config.General.workArea     = 'Crabdir'  # Make sure you set this parameter
 
 config.section_('JobType')
 config.JobType.pluginName       = 'Analysis'
-config.JobType.psetName         = '../ssbanalyzer_cfg.py'
+config.JobType.psetName         = '../run_ssbanalyzer_cfg.py'
 #config.JobType.maxJobRuntimeMin = 2750
 config.JobType.outputFiles      = ['SSBTree.root']
 config.JobType.allowUndistributedCMSSW = True
 #config.JobType.sendExternalFolder = True  # For Electron MVA ID
-config.JobType.maxMemoryMB = 2500
+#config.JobType.maxMemoryMB = 4000
 
 config.section_('Data')    
 config.Data.inputDBS      = 'global'
