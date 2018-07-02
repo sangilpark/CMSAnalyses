@@ -75,7 +75,6 @@ SSBAnalyzer::SSBAnalyzer(const edm::ParameterSet &iConfig) : effectiveAreas_((iC
   muonEnDownToken_ = consumes<pat::MuonCollection>(iConfig.getParameter<edm::InputTag>("muEnDownTag"));
   // needed for Electron
   electronToken_ = mayConsume<edm::View<pat::Electron>>(iConfig.getParameter<edm::InputTag>("eleTag"));
-  electronPATToken_ = consumes<pat::ElectronCollection>(iConfig.getParameter<edm::InputTag>("electronPATInput"));
   electronEnUpToken_ = mayConsume<edm::View<pat::Electron>>(iConfig.getParameter<edm::InputTag>("eleEnUpTag"));
   electronEnDownToken_ = mayConsume<edm::View<pat::Electron>>(iConfig.getParameter<edm::InputTag>("eleEnDownTag"));
   beamSpotInputTag = consumes<reco::BeamSpot>(iConfig.getParameter<edm::InputTag>("bstag"));
