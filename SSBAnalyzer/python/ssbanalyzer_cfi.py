@@ -49,12 +49,11 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	ismuSysTag       = cms.bool(False), # For Systemtic Study ...
 
 	muTag            = cms.InputTag("slimmedMuons",""),
-	muEnUpTag        = cms.InputTag("slimmedMuons",""),	 #FIXME
-	muEnDownTag      = cms.InputTag("slimmedMuons",""),	 #FIXME
-	eleTag           = cms.InputTag("selectedElectrons",""), #FIXME
-	electronPATInput = cms.InputTag("selectedElectrons",""), #FIXME
-	eleEnUpTag       = cms.InputTag("selectedElectrons",""), #FIXME
-	eleEnDownTag     = cms.InputTag("selectedElectrons",""), #FIXME
+	muEnUpTag        = cms.InputTag("slimmedMuons",""),	 
+	muEnDownTag      = cms.InputTag("slimmedMuons",""),	 
+	eleTag           = cms.InputTag("selectedElectrons",""), 
+	eleEnUpTag       = cms.InputTag("selectedElectrons",""), 
+	eleEnDownTag     = cms.InputTag("selectedElectrons",""), 
 	
 	effAreasConfigFile = cms.FileInPath("RecoEgamma/ElectronIdentification/data/Fall17/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_92X.txt"),
 	
@@ -83,19 +82,19 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	bstag           = cms.InputTag("offlineBeamSpot"),
 	convertag       = cms.InputTag("reducedEgamma","reducedConversions"),
 	
-	isjtcutTag = cms.bool(False), #For Jet
-	jtTag = cms.InputTag("updatedPatJetsUpdatedJEC",""), #For Jet
-	jtpuppiTag = cms.InputTag("slimmedJets",""), #For Jet
-	PayLoadName = cms.string('AK4PFchs'),
-	jer_useCondDB = cms.untracked.bool(True),  ### Jet Energy Resolution, if jer_useCondDB == False, use external jer txts below
+	isjtcutTag	= cms.bool(False), #For Jet
+	jtTag		= cms.InputTag("updatedPatJetsUpdatedJEC",""), #For Jet
+	jtpuppiTag	= cms.InputTag("slimmedJets",""), #For Jet
+	PayLoadName	= cms.string('AK4PFchs'),
+	jer_useCondDB	= cms.untracked.bool(True),  ### Jet Energy Resolution, if jer_useCondDB == False, use external jer txts below
 	#phiResolMCFile	= cms.FileInPath('CMSAnalyses/SSBAnalyzer/data/Spring16_25nsV10/Spring16_25nsV10_MC_PhiResolution_AK4PFchs.txt'),
 	#phiResolDataFile	= cms.FileInPath('CMSAnalyses/SSBAnalyzer/data/Spring16_25nsV6/Spring16_25nsV6_DATA_PhiResolution_AK4PFchs.txt'),
 	#ptResolMCFile	= cms.FileInPath('CMSAnalyses/SSBAnalyzer/data/Spring16_25nsV10/Spring16_25nsV10_MC_PtResolution_AK4PFchs.txt'),
 	#ptResolDataFile	= cms.FileInPath('CMSAnalyses/SSBAnalyzer/data/Spring16_25nsV6/Spring16_25nsV6_DATA_PtResolution_AK4PFchs.txt'),
 	#ptResolSFFile	= cms.FileInPath('CMSAnalyses/SSBAnalyzer/data/Spring16_25nsV10/Spring16_25nsV10_MC_SF_AK4PFchs.txt'),
 	
-	csvbjetTag = cms.string("pfCombinedInclusiveSecondaryVertexV2BJetTags"),
-	btagListTag        = cms.vstring(
+	csvbjetTag	= cms.string("pfCombinedInclusiveSecondaryVertexV2BJetTags"),
+	btagListTag     = cms.vstring(
 	        'pfCombinedInclusiveSecondaryVertexV2BJetTags',
 	        'softPFMuonBJetTags',
 	        'softPFMuonByIP3dBJetTags',
