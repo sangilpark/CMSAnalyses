@@ -507,10 +507,6 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
   edm::Handle<edm::View<pat::Electron>> elecs;
   iEvent.getByToken(electronToken_, elecs);
 
-  // For Electron smearing //
-  edm::Handle<pat::ElectronCollection> electronsPAT;
-  iEvent.getByToken(electronPATToken_, electronsPAT);
-
   edm::Handle<reco::BeamSpot> bsHandle;
   iEvent.getByToken(beamSpotInputTag, bsHandle);
 
