@@ -8,22 +8,16 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	bitsPat         = cms.InputTag("TriggerResults","","PAT"),
 	isMCTag         = cms.bool(True),
 	PDFInfoTag      = cms.InputTag("generator",""),
-	FixPOWHEG	    = cms.untracked.string("NNPDF30_nlo_as_0118.LHgrid"),
+	FixPOWHEG	= cms.untracked.string("NNPDF30_nlo_as_0118.LHgrid"),
 	PDFSetNames     = cms.vstring('NNPDF30_nlo_as_0118.LHgrid','CT10nnlo.LHgrid'),#"cteq66.LHgrid"), #'MRST2006nnlo.LHgrid'),# 'NNPDF10_100.LHgrid'), 
 	PDFCent         = cms.bool(True),
 	PDFSys          = cms.bool(True),
 	pvTag           = cms.InputTag("offlineSlimmedPrimaryVertices",""),
-	genEvnTag	    = cms.InputTag("generator"),
-	genLHETag	    = cms.InputTag("externalLHEProducer"),
+	genEvnTag	= cms.InputTag("generator"),
+	genLHETag	= cms.InputTag("externalLHEProducer"),
 	genParTag       = cms.InputTag("prunedGenParticles"),
 	genJetTag       = cms.InputTag("slimmedGenJets","","PAT"),
 	genMETTag	    = cms.InputTag("slimmedMETs","","PAT"), #FIXME
-	#genJetReclusTag = cms.InputTag("slimmedGenJets","","PAT"), #FIXME
-	#genBHadPlusMothersTag   = cms.InputTag("prunedGenParticles",), #FIXME
-	#genBHadIndexTag   = cms.InputTag("slimmedGenJets","","PAT"), #FIXME
-	#genBHadFlavourTag   = cms.InputTag("slimmedGenJets","","PAT"), #FIXME
-	#genBHadFromTopWeakDecayTag   = cms.InputTag("slimmedGenJets","","PAT"), #FIXME
-	#genBHadJetIndexTag   = cms.InputTag("slimmedGenJets","","PAT"), #FIXME
 
 	isSignalTag     = cms.bool(False),
 	RhoTag          = cms.InputTag("fixedGridRhoFastjetAll"),
@@ -55,8 +49,8 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	ismuSysTag       = cms.bool(False), # For Systemtic Study ...
 
 	muTag            = cms.InputTag("slimmedMuons",""),
-	muEnUpTag        = cms.InputTag("slimmedMuons",""),	#FIXME
-	muEnDownTag      = cms.InputTag("slimmedMuons",""), #FIXME
+	muEnUpTag        = cms.InputTag("slimmedMuons",""),	 #FIXME
+	muEnDownTag      = cms.InputTag("slimmedMuons",""),	 #FIXME
 	eleTag           = cms.InputTag("selectedElectrons",""), #FIXME
 	electronPATInput = cms.InputTag("selectedElectrons",""), #FIXME
 	eleEnUpTag       = cms.InputTag("selectedElectrons",""), #FIXME
@@ -72,42 +66,15 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	# ID decisions (mvaid)
 	mva_Iso_eleMediumMap = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-Iso-V1-wp90"),
 	mva_Iso_eleTightMap  = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-Iso-V1-wp80"),
-	#mva_Iso_eleHZZIDMap  = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-Iso-V1-wpLoose"),
 	mva_NoIso_eleMediumMap = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-noIso-V1-wp90"),
 	mva_NoIso_eleTightMap  = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-noIso-V1-wp80"),
-	#mva_NoIso_eleHZZIDMap  = cms.InputTag("egmGsfElectronIDs:mvaEleID-Fall17-noIso-V1-wpLoose"),
 	
-	#
 	# ValueMaps with MVA results
-	#
 	mvaIsoValuesMap     = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17IsoV1Values"),
 	mvaIsoCategoriesMap = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17IsoV1Categories"),
 	mvaNoIsoValuesMap     = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17NoIsoV1Values"),
 	mvaNoIsoCategoriesMap = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17NoIsoV1Categories"),
-	#mvaValuesHZZMap  = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16HZZV1Values"),
-	#mvaCategoriesHZZMap = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16HZZV1Categories"),
 	
-	#phoTag          = cms.InputTag("selectedPhotons",""),
-	#photonPATInput  = cms.InputTag("selectedPhotons",""), #FIXME
-	#phoLooseIdMap   = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V1-loose"  ),
-	#phoMediumIdMap  = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V1-medium" ),
-	#phoTightIdMap   = cms.InputTag("egmPhotonIDs:cutBasedPhotonID-Fall17-94X-V1-tight"  ), 
-	
-	#pho_mva_NontrigTightIdWP80Map = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp80"),
-	#pho_mva_NontrigTightIdWP90Map = cms.InputTag("egmPhotonIDs:mvaPhoID-RunIIFall17-v1-wp80"),
-	
-	#pho_mvaWP80ValuesMap          = cms.InputTag("photonMVAValueMapProducer:PhotonMVAEstimatorRun2Spring16NonTrigV1Values"), #FIXME
-	#pho_mvaWP90ValuesMap          = cms.InputTag("photonMVAValueMapProducer:PhotonMVAEstimatorRun2Spring16NonTrigV1Values"), #FIXME
-	#full5x5SigmaIEtaIEtaMap   = cms.InputTag("photonIDValueMapProducer:phoFull5x5SigmaIEtaIEta"),
-	#phoChargedIsolation       = cms.InputTag('photonIDValueMapProducer:phoChargedIsolation'),
-	#phoNeutralHadronIsolation = cms.InputTag('photonIDValueMapProducer:phoNeutralHadronIsolation'),
-	#phoPhotonIsolation        = cms.InputTag('photonIDValueMapProducer:phoPhotonIsolation'),
-	#phoWorstChargedIsolation  = cms.InputTag('photonIDValueMapProducer:phoWorstChargedIsolation'),
-	
-	
-	#effAreaChHadFile  = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfChargedHadrons_90percentBased.txt"),
-	#effAreaNeuHadFile = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfNeutralHadrons_90percentBased.txt"),
-	#effAreaPhoFile    = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfPhotons_90percentBased.txt"),
 	effAreaChHadFile  = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfChargedHadrons_90percentBased_TrueVtx.txt"),
 	effAreaNeuHadFile = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfNeutralHadrons_90percentBased_TrueVtx.txt"),
 	effAreaPhoFile    = cms.FileInPath("RecoEgamma/PhotonIdentification/data/Fall17/effAreaPhotons_cone03_pfPhotons_90percentBased_TrueVtx.txt"),
@@ -148,5 +115,4 @@ ssbanalyzer = cms.EDAnalyzer('SSBAnalyzer',
 	        quality = cms.string('LOOSE')
 	        ),
 	metTag = cms.InputTag("slimmedMETs","","PAT"),
-	#metmucleancorTag = cms.InputTag("slimmedMETs","","PAT"),
 )
