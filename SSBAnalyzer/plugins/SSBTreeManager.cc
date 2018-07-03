@@ -232,11 +232,8 @@ void SSBTreeManager::Book(TTree* tree){
     ssbtree->Branch("Elec_Inner_Hit", &VectorBox_Int["Elec_Inner_Hit"]);
     ssbtree->Branch("Elec_MVA_Medium", &VectorBox_Bool["Elec_MVA_Medium"]);
     ssbtree->Branch("Elec_MVA_Tight", &VectorBox_Bool["Elec_MVA_Tight"]);
-    ssbtree->Branch("Elec_MVA_HZZ", &VectorBox_Bool["Elec_MVA_HZZ"]);
     ssbtree->Branch("Elec_MVA_Values", &VectorBox_Float["Elec_MVA_Values"]);
     ssbtree->Branch("Elec_MVA_Categories", &VectorBox_Int["Elec_MVA_Categories"]);
-    ssbtree->Branch("Elec_MVA_HZZ_Values", &VectorBox_Float["Elec_MVA_HZZ_Values"]);
-    ssbtree->Branch("Elec_MVA_HZZ_Categories", &VectorBox_Int["Elec_MVA_HZZ_Categories"]);
     //ssbtree->Branch("Elec_MVATrig_Tight", &VectorBox_Bool["Elec_MVATrig_Tight"]);
     //ssbtree->Branch("Elec_MVA_NonTrigV0", &VectorBox_Float["Elec_MVA_NonTrigV0"]);
     //ssbtree->Branch("Elec_MVA_TrigNoIPV0", &VectorBox_Float["Elec_MVA_TrigNoIPV0"]);
@@ -253,7 +250,6 @@ void SSBTreeManager::Book(TTree* tree){
     ssbtree->Branch("Elec_SCB_dEtaIn", &VectorBox_Float["Elec_SCB_dEtaIn"]);
     ssbtree->Branch("Elec_SCB_dPhiIn", &VectorBox_Float["Elec_SCB_dPhiIn"]);
     ssbtree->Branch("Elec_SCB_hOverE", &VectorBox_Float["Elec_SCB_hOverE"]);
-    ssbtree->Branch("Elec_SCB_HEEP", &VectorBox_Bool["Elec_SCB_HEEP"]);
     ssbtree->Branch("Elec_SCB_ooEmooP", &VectorBox_Float["Elec_SCB_ooEmooP"]);
     ssbtree->Branch("Elec_SCB_sigmaIetaIeta", &VectorBox_Float["Elec_SCB_sigmaIetaIeta"]);
     ssbtree->Branch("Elec_Supercluster_Eta", &VectorBox_Double["Elec_Supercluster_Eta"]);
@@ -601,11 +597,8 @@ void SSBTreeManager::InitializeVariables(){
     VectorBox_Int["Elec_Inner_Hit"].clear();
     VectorBox_Bool["Elec_MVA_Medium"].clear();
     VectorBox_Bool["Elec_MVA_Tight"].clear();
-    VectorBox_Bool["Elec_MVA_HZZ"].clear();
     VectorBox_Float["Elec_MVA_Values"].clear();
     VectorBox_Int["Elec_MVA_Categories"].clear();
-    VectorBox_Float["Elec_MVA_HZZ_Values"].clear();
-    VectorBox_Int["Elec_MVA_HZZ_Categories"].clear();
     //VectorBox_Bool["Elec_MVATrig_Tight"].clear();
     //VectorBox_Float["Elec_MVA_NonTrigV0"].clear();
     //VectorBox_Float["Elec_MVA_TrigNoIPV0"].clear();
@@ -619,7 +612,6 @@ void SSBTreeManager::InitializeVariables(){
     VectorBox_Bool["Elec_SCB_Medium"].clear();
     VectorBox_Bool["Elec_SCB_Tight"].clear();
     VectorBox_Bool["Elec_SCB_Veto"].clear();
-    VectorBox_Bool["Elec_SCB_HEEP"].clear();
     VectorBox_Float["Elec_SCB_dEtaIn"].clear();
     VectorBox_Float["Elec_SCB_dPhiIn"].clear();
     VectorBox_Float["Elec_SCB_hOverE"].clear();
