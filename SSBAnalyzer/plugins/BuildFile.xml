@@ -15,3 +15,4 @@
 <use name="clhep" />
 <use name="lhapdf" />
 <flags EDM_PLUGIN="1"/>
+<Flags CXXFLAGS="-Werror -g"/>
