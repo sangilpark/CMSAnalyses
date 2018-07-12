@@ -6,9 +6,9 @@ void SSBTreeManager::FillNtuple(){
 }
 
 void SSBTreeManager::Fill(st VariableName, double pt, double eta, double phi, double e, int index){
-    if ((it_VariableBox_LorentzVector = VariableBox_LorentzVector.find(VariableName.c_str())) != VariableBox_LorentzVector.end()){
-	new ((*VariableBox_LorentzVector[VariableName.c_str()])[index]) TLorentzVector();
-	( (TLorentzVector*)VariableBox_LorentzVector[VariableName.c_str()]->At(index) )->SetPtEtaPhiE(pt, eta, phi, e);
+    if ((it_VariableBox_LorentzVector = VariableBox_LorentzVector.find(VariableName)) != VariableBox_LorentzVector.end()){
+	new ((*VariableBox_LorentzVector[VariableName])[index]) TLorentzVector();
+	( (TLorentzVector*)VariableBox_LorentzVector[VariableName]->At(index) )->SetPtEtaPhiE(pt, eta, phi, e);
     }
     else {
 	std::cout << "Fill_LV_Int Error : " << VariableName << std::endl;
@@ -16,9 +16,9 @@ void SSBTreeManager::Fill(st VariableName, double pt, double eta, double phi, do
 }
 
 void SSBTreeManager::Fill(st VariableName, double pt, double eta, double phi, double e, unsigned int index){
-    if ((it_VariableBox_LorentzVector = VariableBox_LorentzVector.find(VariableName.c_str())) != VariableBox_LorentzVector.end()){
-	new ((*VariableBox_LorentzVector[VariableName.c_str()])[index]) TLorentzVector();
-	( (TLorentzVector*)VariableBox_LorentzVector[VariableName.c_str()]->At(index) )->SetPtEtaPhiE(pt, eta, phi, e);
+    if ((it_VariableBox_LorentzVector = VariableBox_LorentzVector.find(VariableName)) != VariableBox_LorentzVector.end()){
+	new ((*VariableBox_LorentzVector[VariableName])[index]) TLorentzVector();
+	( (TLorentzVector*)VariableBox_LorentzVector[VariableName]->At(index) )->SetPtEtaPhiE(pt, eta, phi, e);
     }
     else {
 	std::cout << "Fill_LV_UInt Error : " << VariableName << std::endl;
@@ -26,11 +26,11 @@ void SSBTreeManager::Fill(st VariableName, double pt, double eta, double phi, do
 }
 
 void SSBTreeManager::Fill(st VariableName, bool VariableBool){
-    if ((it_VariableBox_Bool = VariableBox_Bool.find(VariableName.c_str())) != VariableBox_Bool.end()){
-	VariableBox_Bool[VariableName.c_str()] = VariableBool;
+    if ((it_VariableBox_Bool = VariableBox_Bool.find(VariableName)) != VariableBox_Bool.end()){
+	VariableBox_Bool[VariableName] = VariableBool;
 	//std::cout << "Val : " << VariableBool << " == " << it_VariableBox_Bool->second << std::endl;
     }
-    else if ((it_VectorBox_Bool = VectorBox_Bool.find(VariableName.c_str())) != VectorBox_Bool.end()){
+    else if ((it_VectorBox_Bool = VectorBox_Bool.find(VariableName)) != VectorBox_Bool.end()){
         (it_VectorBox_Bool->second).push_back(VariableBool);
 	//std::cout << "Vec : " << VariableBool << " == " << (it_VectorBox_Bool->second).back() << std::endl;
     }
@@ -40,11 +40,11 @@ void SSBTreeManager::Fill(st VariableName, bool VariableBool){
 }
 
 void SSBTreeManager::Fill(st VariableName, int VariableInt){
-    if ((it_VariableBox_Int = VariableBox_Int.find(VariableName.c_str())) != VariableBox_Int.end()){
-	VariableBox_Int[VariableName.c_str()] = VariableInt;
+    if ((it_VariableBox_Int = VariableBox_Int.find(VariableName)) != VariableBox_Int.end()){
+	VariableBox_Int[VariableName] = VariableInt;
 	//std::cout << "Val : " << VariableInt << " == " << it_VariableBox_Int->second << std::endl;
     }
-    else if ((it_VectorBox_Int = VectorBox_Int.find(VariableName.c_str())) != VectorBox_Int.end()){
+    else if ((it_VectorBox_Int = VectorBox_Int.find(VariableName)) != VectorBox_Int.end()){
         (it_VectorBox_Int->second).push_back(VariableInt);
 	//std::cout << "Vec : " << VariableInt << " == " << (it_VectorBox_Int->second).back() << std::endl;
     }
@@ -54,11 +54,11 @@ void SSBTreeManager::Fill(st VariableName, int VariableInt){
 }
 
 void SSBTreeManager::Fill(st VariableName, unsigned int VariableUInt){
-    if ((it_VariableBox_UInt = VariableBox_UInt.find(VariableName.c_str())) != VariableBox_UInt.end()){
-	VariableBox_UInt[VariableName.c_str()] = VariableUInt;
+    if ((it_VariableBox_UInt = VariableBox_UInt.find(VariableName)) != VariableBox_UInt.end()){
+	VariableBox_UInt[VariableName] = VariableUInt;
 	//std::cout << "Val : " << VariableUInt << " == " << it_VariableBox_UInt->second << std::endl;
     }
-    else if ((it_VectorBox_UInt = VectorBox_UInt.find(VariableName.c_str())) != VectorBox_UInt.end()){
+    else if ((it_VectorBox_UInt = VectorBox_UInt.find(VariableName)) != VectorBox_UInt.end()){
         (it_VectorBox_UInt->second).push_back(VariableUInt);
 	//std::cout << "Vec : " << VariableUInt << " == " << (it_VectorBox_UInt->second).back() << std::endl;
     }
@@ -68,11 +68,11 @@ void SSBTreeManager::Fill(st VariableName, unsigned int VariableUInt){
 }
 
 void SSBTreeManager::Fill(st VariableName, float VariableFloat){
-    if ((it_VariableBox_Float = VariableBox_Float.find(VariableName.c_str())) != VariableBox_Float.end()){
-	VariableBox_Float[VariableName.c_str()] = VariableFloat;
+    if ((it_VariableBox_Float = VariableBox_Float.find(VariableName)) != VariableBox_Float.end()){
+	VariableBox_Float[VariableName] = VariableFloat;
 	//std::cout << "Val : " << VariableFloat << " == " << it_VariableBox_Float->second << std::endl;
     }
-    else if ((it_VectorBox_Float = VectorBox_Float.find(VariableName.c_str())) != VectorBox_Float.end()){
+    else if ((it_VectorBox_Float = VectorBox_Float.find(VariableName)) != VectorBox_Float.end()){
         (it_VectorBox_Float->second).push_back(VariableFloat);
 	//std::cout << "Vec : " << VariableFloat << " == " << (it_VectorBox_Float->second).back() << std::endl;
     }
@@ -82,11 +82,11 @@ void SSBTreeManager::Fill(st VariableName, float VariableFloat){
 }
 
 void SSBTreeManager::Fill(st VariableName, double VariableDouble){
-    if ((it_VariableBox_Double = VariableBox_Double.find(VariableName.c_str())) != VariableBox_Double.end()){
-	VariableBox_Double[VariableName.c_str()] = VariableDouble;
+    if ((it_VariableBox_Double = VariableBox_Double.find(VariableName)) != VariableBox_Double.end()){
+	VariableBox_Double[VariableName] = VariableDouble;
 	//std::cout << "Val : " << VariableDouble << " == " << it_VariableBox_Double->second << std::endl;
     }
-    else if ((it_VectorBox_Double = VectorBox_Double.find(VariableName.c_str())) != VectorBox_Double.end()){
+    else if ((it_VectorBox_Double = VectorBox_Double.find(VariableName)) != VectorBox_Double.end()){
         (it_VectorBox_Double->second).push_back(VariableDouble);
 	//std::cout << "Vec : " << VariableDouble << " == " << (it_VectorBox_Double->second).back() << std::endl;
     }
@@ -96,11 +96,11 @@ void SSBTreeManager::Fill(st VariableName, double VariableDouble){
 }
 
 void SSBTreeManager::Fill(st VariableName, st VariableString){
-    if ((it_VariableBox_String = VariableBox_String.find(VariableName.c_str())) != VariableBox_String.end()){
-	VariableBox_String[VariableName.c_str()] = VariableString;
+    if ((it_VariableBox_String = VariableBox_String.find(VariableName)) != VariableBox_String.end()){
+	VariableBox_String[VariableName] = VariableString;
 	//std::cout << "Val : " << VariableString << " == " << it_VariableBox_String->second << std::endl;
     }
-    else if ((it_VectorBox_String = VectorBox_String.find(VariableName.c_str())) != VectorBox_String.end()){
+    else if ((it_VectorBox_String = VectorBox_String.find(VariableName)) != VectorBox_String.end()){
         (it_VectorBox_String->second).push_back(VariableString);
 	//std::cout << "Vec : " << VariableString << " == " << (it_VectorBox_String->second).back() << std::endl;
     }
@@ -110,7 +110,7 @@ void SSBTreeManager::Fill(st VariableName, st VariableString){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_b VectorBool){
-    if ((it_VectorBox_Bool = VectorBox_Bool.find(VariableName.c_str())) != VectorBox_Bool.end()){
+    if ((it_VectorBox_Bool = VectorBox_Bool.find(VariableName)) != VectorBox_Bool.end()){
         (it_VectorBox_Bool->second) = VectorBool;
     }
     else {
@@ -119,7 +119,7 @@ void SSBTreeManager::Fill(st VariableName, vec_b VectorBool){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_i VectorInt){
-    if ((it_VectorBox_Int = VectorBox_Int.find(VariableName.c_str())) != VectorBox_Int.end()){
+    if ((it_VectorBox_Int = VectorBox_Int.find(VariableName)) != VectorBox_Int.end()){
         (it_VectorBox_Int->second) = VectorInt;
     }
     else {
@@ -128,7 +128,7 @@ void SSBTreeManager::Fill(st VariableName, vec_i VectorInt){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_ui VectorUInt){
-    if ((it_VectorBox_UInt = VectorBox_UInt.find(VariableName.c_str())) != VectorBox_UInt.end()){
+    if ((it_VectorBox_UInt = VectorBox_UInt.find(VariableName)) != VectorBox_UInt.end()){
         (it_VectorBox_UInt->second) = VectorUInt;
     }
     else {
@@ -137,7 +137,7 @@ void SSBTreeManager::Fill(st VariableName, vec_ui VectorUInt){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_f VectorFloat){
-    if ((it_VectorBox_Float = VectorBox_Float.find(VariableName.c_str())) != VectorBox_Float.end()){
+    if ((it_VectorBox_Float = VectorBox_Float.find(VariableName)) != VectorBox_Float.end()){
         (it_VectorBox_Float->second) = VectorFloat;
     }
     else {
@@ -146,7 +146,7 @@ void SSBTreeManager::Fill(st VariableName, vec_f VectorFloat){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_d VectorDouble){
-    if ((it_VectorBox_Double = VectorBox_Double.find(VariableName.c_str())) != VectorBox_Double.end()){
+    if ((it_VectorBox_Double = VectorBox_Double.find(VariableName)) != VectorBox_Double.end()){
         (it_VectorBox_Double->second) = VectorDouble;
     }
     else {
@@ -155,7 +155,7 @@ void SSBTreeManager::Fill(st VariableName, vec_d VectorDouble){
 }
 
 void SSBTreeManager::Fill(st VariableName, vec_s VectorString){
-    if ((it_VectorBox_String = VectorBox_String.find(VariableName.c_str())) != VectorBox_String.end()){
+    if ((it_VectorBox_String = VectorBox_String.find(VariableName)) != VectorBox_String.end()){
         (it_VectorBox_String->second) = VectorString;
     }
     else {
@@ -196,7 +196,7 @@ void SSBTreeManager::Book(TTree* tree){
     ssbtree->Branch("Info_EventNumber", &VariableBox_Int["Info_EventNumber"], "Info_EventNumber/I");
     ssbtree->Branch("Info_Luminosity", &VariableBox_Int["Info_Luminosity"], "Info_Luminosity/I");
     ssbtree->Branch("Info_RunNumber", &VariableBox_Int["Info_RunNumber"], "Info_RunNumber/I");
-    ssbtree->Branch("Info_isData", &VariableBox_Bool["Info_isData"], "Info_isData/B");
+    ssbtree->Branch("Info_isData", &VariableBox_Bool["Info_isData"], "Info_isData/O");
 
     ssbtree->Branch("Channel_Idx", &VariableBox_Int["Channel_Idx"], "Channel_Idx/I");
     ssbtree->Branch("Channel_Idx_Final", &VariableBox_Int["Channel_Idx_Final"], "Channel_Idx_Final/I");
@@ -265,9 +265,9 @@ void SSBTreeManager::Book(TTree* tree){
 
 
 
-    ssbtree->Branch("Filter_Greedy_Muon", &VariableBox_Bool["Filter_Greedy_Muon"], "Filter_Greedy_Muon/B");
-    ssbtree->Branch("Filter_Inconsistent_MuonPt", &VariableBox_Bool["Filter_Inconsistent_MuonPt"], "Filter_Inconsistent_MuonPt/B");
-    ssbtree->Branch("Filter_PFReco_Muon", &VariableBox_Bool["Filter_PFReco_Muon"], "Filter_PFReco_Muon/B");
+    ssbtree->Branch("Filter_Greedy_Muon", &VariableBox_Bool["Filter_Greedy_Muon"], "Filter_Greedy_Muon/O");
+    ssbtree->Branch("Filter_Inconsistent_MuonPt", &VariableBox_Bool["Filter_Inconsistent_MuonPt"], "Filter_Inconsistent_MuonPt/O");
+    ssbtree->Branch("Filter_PFReco_Muon", &VariableBox_Bool["Filter_PFReco_Muon"], "Filter_PFReco_Muon/O");
     ssbtree->Branch("Filter_PV", &VectorBox_Bool["Filter_PV"]);
 
     ssbtree->Branch("GenJet", "TClonesArray", &VariableBox_LorentzVector["GenJet"], 32000, 0);
@@ -924,7 +924,7 @@ void SSBTreeManager::GenBook(TTree* tree){
     ssbtree->Branch("Info_EventNumber", &VariableBox_Int["Info_EventNumber"], "Info_EventNumber/I");
     ssbtree->Branch("Info_Luminosity", &VariableBox_Int["Info_Luminosity"], "Info_Luminosity/I");
     ssbtree->Branch("Info_RunNumber", &VariableBox_Int["Info_RunNumber"], "Info_RunNumber/I");
-    ssbtree->Branch("Info_isData", &VariableBox_Bool["Info_isData"], "Info_isData/B");
+    ssbtree->Branch("Info_isData", &VariableBox_Bool["Info_isData"], "Info_isData/O");
 
     ssbtree->Branch("Channel_Idx", &VariableBox_Int["Channel_Idx"], "Channel_Idx/I");
     ssbtree->Branch("Channel_Idx_Final", &VariableBox_Int["Channel_Idx_Final"], "Channel_Idx_Final/I");

@@ -44,10 +44,10 @@ SSBAnalyzer::SSBAnalyzer(const edm::ParameterSet &iConfig) : effectiveAreas_((iC
   isSignal = iConfig.getParameter<bool>("isSignalTag");
   // needed for PDF
   pdfTag = consumes<GenEventInfoProduct>(iConfig.getParameter<edm::InputTag>("PDFInfoTag"));
-  fixPOWHEG_ = iConfig.getUntrackedParameter<std::string>("FixPOWHEG", "");
-  pdfSets = iConfig.getParameter<std::vector<std::string>>("PDFSetNames");
-  pdfCent = iConfig.getParameter<bool>("PDFCent");
-  pdfSys = iConfig.getParameter<bool>("PDFSys");
+  //fixPOWHEG_ = iConfig.getUntrackedParameter<std::string>("FixPOWHEG", "");
+  //pdfSets = iConfig.getParameter<std::vector<std::string>>("PDFSetNames");
+  //pdfCent = iConfig.getParameter<bool>("PDFCent");
+  //pdfSys = iConfig.getParameter<bool>("PDFSys");
 
   triggerBitsPAT_ = consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("bitsPat"));
 
@@ -132,9 +132,9 @@ SSBAnalyzer::SSBAnalyzer(const edm::ParameterSet &iConfig) : effectiveAreas_((iC
 }
 
 SSBAnalyzer::~SSBAnalyzer() {
-
   // do anything here that needs to be done at desctruction time
   // (e.g. close files, deallocate resources etc.)
+  delete isolation;
 }
 
 //
@@ -193,6 +193,7 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
     v_pdf_nom.clear();
     v_pdf_w_nom.clear();
 
+    /*
     if (pdfCent) {
       pdfWeight->SetPDFSet(1);
 
@@ -244,7 +245,7 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
 	  double _p2 = pdfWeight->getCentralPDFWeight(2);
 	  v_pdf_nom.push_back(_p1 * _p2);
 	}
-      }
+      } 
       double _nominal = _pdf1 * _pdf2;
 
       for (unsigned int j = 0; j < v_pdf_nom.size(); ++j) {
@@ -261,8 +262,9 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
       ssbtreeManager->Fill("PDFWeight_Q", Q);
       ssbtreeManager->Fill("PDFWeight_PDF1", _pdf1);
       ssbtreeManager->Fill("PDFWeight_PDF2", _pdf2);
-    }
+    } */ 
 
+    /*
     if (pdfSys) {
       for (unsigned int i = 1; i <= pdfSets.size(); ++i) {
 	pdfWeight->SetPDFSet(i);
@@ -281,7 +283,7 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
       }
       //         ssbtreeManager->Fill( "PDFWeight_Up"   , pdfWeight->getSys("Up")   );
       //         ssbtreeManager->Fill( "PDFWeight_Down" , pdfWeight->getSys("Down") );
-    }
+    } */ //End of pdfSys
 
     //////////////////////////////
     /// Generator Event Weight ///
@@ -314,7 +316,7 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
     ///////////////////////////////////////////
     /// Generator Level Particle Informaton ///
     ///////////////////////////////////////////
-    GenPar(iEvent, ssbtreeManager);
+    //GenPar(iEvent, ssbtreeManager);
     GenJet(iEvent, ssbtreeManager);
     GenMET(iEvent, ssbtreeManager);
   } /// End of !isDATA ///
@@ -1227,6 +1229,7 @@ void SSBAnalyzer::analyze(const edm::Event &iEvent, const edm::EventSetup &iSetu
 
   /// Fill Ntuples at each event
   ssbtreeManager->FillNtuple();
+  delete jetcorr_uncertainty;
 
 #ifdef THIS_IS_AN_EVENT_EXAMPLE
   Handle<ExampleData> pIn;
@@ -1249,7 +1252,7 @@ void SSBAnalyzer::beginJob() {
   /// Isolation calculation
   isolation = new SSBIsoCal();
 
-  /// PDF
+/*  /// PDF
   if (isMC == true) {
     if (pdfCent) {
       /// PDFWeight
@@ -1260,7 +1263,7 @@ void SSBAnalyzer::beginJob() {
       LHAPDF::initPDFSet(k, pdfSets[k - 1]);
       v_pdfWeights.push_back(new SSBPDFWeight(pdfSets.size(), pdfSets.at(k - 1)));
     }
-  }
+  }  */
   //   LHAPDF::initPDFSet(1, pdfSets.at(0));
 }
 
