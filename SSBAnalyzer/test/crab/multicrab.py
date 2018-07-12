@@ -20,7 +20,7 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.section_('Data')    
 config.Data.inputDBS      = 'global'
-config.Data.splitting	  = 'Automatic'
+#config.Data.splitting	  = 'Automatic'
 #config.Data.splitting	  = 'FileBased'
 #config.Data.splitting     = 'LumiBased'
 #config.Data.unitsPerJob   = 1
